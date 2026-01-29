@@ -43,6 +43,16 @@ Superpowers 시스템을 쓰는 환경이라면, 아래처럼 스킬을 로드�
 
 > 참고: 이 스킬은 “설치 자동화”가 목적이 아니라, **검색→검증→동의→설치**의 안전한 절차를 강제하는 것이 목적입니다.
 
+### (권장) 프로젝트 시작 시 준자동 루틴 켜기 (`~/.codex/AGENTS.md`)
+
+처음 설치한 사람이라면, 아래 “프로젝트 시작 루틴”을 전역 `~/.codex/AGENTS.md`에 추가해두는 것을 권장합니다(파일 수정은 항상 사용자 동의 후):
+
+1) 어떤 스킬이 이 레포에 맞는지 미리보기(dry-run)
+   - `node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo .`
+2) 출력 내용을 사용자에게 보여주고 적용할지 물어보기
+3) 동의 시 레포 `AGENTS.md`에 반영(재실행해도 중복 없음)
+   - `node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo . --write`
+
 ### (선택) 설치된 스킬을 레포 `AGENTS.md`에 자동으로 핀(pin)하기
 
 전역으로 스킬을 설치해도, 해당 레포의 `AGENTS.md`에 명시되어 있지 않으면 Codex가 “사용 가능한 스킬 목록”으로 인식하지 못할 수 있습니다.
@@ -97,6 +107,16 @@ List installed global skills for Codex:
 ```bash
 npx -y skills ls -g -a codex
 ```
+
+## Recommended: enable the “project start” semi-auto routine (`~/.codex/AGENTS.md`)
+
+For first-time installs, it’s recommended to add a small “project start” routine to your global `~/.codex/AGENTS.md`, so each new repo begins by pinning relevant installed skills into that repo’s `AGENTS.md` (always ask before writing):
+
+1) Preview (dry-run):
+   - `node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo .`
+2) Show output and ask whether to apply
+3) If approved, write/update repo `AGENTS.md` (idempotent):
+   - `node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo . --write`
 
 ## Optional: Pin installed skills into a repo `AGENTS.md`
 

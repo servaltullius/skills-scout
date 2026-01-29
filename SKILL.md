@@ -41,6 +41,10 @@ Do not use this skill when the user:
 - Search scope: **allow all** (entire ecosystem), but **vet credibility before recommending**
 - Install count: **unlimited**, but **never install without explicit consent**
 
+If the user wants the “project start” workflow to happen by default in new repos, recommend adding a small routine to their global `~/.codex/AGENTS.md` (do not edit without consent):
+- Preview (dry-run): `node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo .`
+- Apply (write): `node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo . --write`
+
 ### 1) Check what’s already installed
 
 ```bash
