@@ -43,6 +43,24 @@ Superpowers 시스템을 쓰는 환경이라면, 아래처럼 스킬을 로드�
 
 > 참고: 이 스킬은 “설치 자동화”가 목적이 아니라, **검색→검증→동의→설치**의 안전한 절차를 강제하는 것이 목적입니다.
 
+### (선택) 설치된 스킬을 레포 `AGENTS.md`에 자동으로 핀(pin)하기
+
+전역으로 스킬을 설치해도, 해당 레포의 `AGENTS.md`에 명시되어 있지 않으면 Codex가 “사용 가능한 스킬 목록”으로 인식하지 못할 수 있습니다.
+
+`skills-scout`에는 설치된 스킬(전역 + 레포 로컬)을 스캔해서, 현재 레포에 관련 있어 보이는 스킬을 골라 `AGENTS.md`에 자동으로 적어주는 스크립트가 포함되어 있습니다.
+
+드라이런(미적용, 출력만):
+
+```bash
+node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo .
+```
+
+적용(파일 수정):
+
+```bash
+node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo . --write
+```
+
 ---
 
 ## Overview (EN)
@@ -67,4 +85,22 @@ List installed global skills for Codex:
 
 ```bash
 npx -y skills ls -g -a codex
+```
+
+## Optional: Pin installed skills into a repo `AGENTS.md`
+
+Even if you install skills globally, Codex may not “see” them for a given repo unless they are listed in that repo’s `AGENTS.md`.
+
+This repo includes a helper script that scans installed skills (global + repo-local), picks relevant ones for the current repo, and writes/updates a generated pinned block in `<repo>/AGENTS.md` (creates it if missing).
+
+Dry-run (prints would-be `AGENTS.md`):
+
+```bash
+node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo .
+```
+
+Apply changes:
+
+```bash
+node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo . --write
 ```

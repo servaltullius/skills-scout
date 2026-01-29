@@ -177,6 +177,31 @@ npx -y skills ls -g -a codex
 
 Then load and follow the installed skill(s)’ instructions while doing the user’s task.
 
+### 7) (Optional) Pin installed skills into this repo’s `AGENTS.md`
+
+If you install skills globally, Codex may not “see” them for this repo unless they’re listed in the repo’s `AGENTS.md`.
+
+This repo includes a helper script that:
+- scans the current repo to infer stack keywords
+- scans installed skills (global + repo-local)
+- writes/updates a generated pinned section in `<repo>/AGENTS.md` (creates it if missing)
+
+Dry-run (prints the would-be `AGENTS.md`):
+
+```bash
+node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo .
+```
+
+Apply changes:
+
+```bash
+node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo . --write
+```
+
+Notes:
+- Only the block between `<!-- skills-scout:start -->` and `<!-- skills-scout:end -->` is managed.
+- Re-running is idempotent.
+
 ## Quick Reference
 
 | Goal | Command |
