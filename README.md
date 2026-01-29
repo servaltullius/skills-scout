@@ -53,6 +53,27 @@ Superpowers 시스템을 쓰는 환경이라면, 아래처럼 스킬을 로드�
 3) 동의 시 레포 `AGENTS.md`에 반영(재실행해도 중복 없음)
    - `node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo . --write`
 
+복붙용 스니펫(전역 `~/.codex/AGENTS.md`에 추가):
+
+```text
+## Project Start Routine (Semi-Auto)
+
+<IMPORTANT>
+새 레포에서 작업을 시작하거나(또는 레포 `AGENTS.md`가 없거나 오래됐을 때) 아래를 먼저 수행합니다:
+
+1) 설치된 스킬 중 이 레포에 맞는 것을 미리보기(dry-run):
+   - `node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo .`
+2) 출력 결과를 사용자에게 보여주고, 적용할지(파일 수정) 동의를 묻습니다.
+3) 동의 시 레포 `AGENTS.md`를 생성/갱신합니다(재실행해도 중복 없음):
+   - `node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo . --write`
+4) 이후 레포 `AGENTS.md`에 핀된 스킬을 기준으로 필요한 스킬을 로드/사용합니다. 부족하면 `skills-scout`로 검색→검증→동의 후 설치합니다.
+
+참고:
+- pinning 스크립트는 `<!-- skills-scout:start -->` ~ `<!-- skills-scout:end -->` 블록만 관리합니다.
+- 사용자 명시적 동의 없이 레포 파일을 수정하지 않습니다.
+</IMPORTANT>
+```
+
 ### (선택) 설치된 스킬을 레포 `AGENTS.md`에 자동으로 핀(pin)하기
 
 전역으로 스킬을 설치해도, 해당 레포의 `AGENTS.md`에 명시되어 있지 않으면 Codex가 “사용 가능한 스킬 목록”으로 인식하지 못할 수 있습니다.
@@ -117,6 +138,27 @@ For first-time installs, it’s recommended to add a small “project start” r
 2) Show output and ask whether to apply
 3) If approved, write/update repo `AGENTS.md` (idempotent):
    - `node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo . --write`
+
+Copy/paste snippet (add to global `~/.codex/AGENTS.md`):
+
+```text
+## Project Start Routine (Semi-Auto)
+
+<IMPORTANT>
+When starting work in a new repo (or when `AGENTS.md` is missing/outdated), do this first:
+
+1) Preview which installed skills match this repo (dry-run):
+   - `node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo .`
+2) Show the output to the user and ask whether to apply it.
+3) If approved, write/update the repo `AGENTS.md` (idempotent):
+   - `node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo . --write`
+4) Then follow the repo `AGENTS.md` to decide which skills to load/use. If something is missing, use `skills-scout` to find/vet/ask consent before installing.
+
+Notes:
+- The pinning script only manages the block between `<!-- skills-scout:start -->` and `<!-- skills-scout:end -->`.
+- Never modify repo files without explicit user consent.
+</IMPORTANT>
+```
 
 ## Optional: Pin installed skills into a repo `AGENTS.md`
 
