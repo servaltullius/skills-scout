@@ -11,6 +11,15 @@ Discover relevant skills from `skills.sh` and install them globally for Codex **
 
 Core principle: **Search before building; ask before installing.**
 
+## How this differs from `find-skills` (vercel-labs/skills)
+
+There is an upstream skill that covers “how to use `npx skills find`”. `skills-scout` is intentionally stricter and Codex-focused:
+- Adds hard‑mode vetting (repo metadata + risky command scan) before recommending installs.
+- Enforces explicit consent gates and Codex global install defaults (`-g -a codex`).
+- Optionally pins installed skills into the repo `AGENTS.md` so they’re actually visible per repo.
+
+Reference: https://github.com/vercel-labs/skills/blob/main/skills/find-skills/SKILL.md
+
 ## When to Use
 
 Use this skill when the user:

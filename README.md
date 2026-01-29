@@ -61,6 +61,17 @@ node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo .
 node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo . --write
 ```
 
+### `find-skills`(vercel-labs/skills)와의 차이
+
+`skills-scout`는 아래의 공식 스킬과 목표가 겹치지만, **Codex 환경에서 “더 보수적으로” 스킬을 설치/운영**하기 위해 추가 규칙을 강제합니다.
+
+- 참고(원본): https://github.com/vercel-labs/skills/blob/main/skills/find-skills/SKILL.md
+
+차이점 요약:
+- `find-skills`는 Skills CLI 사용법과 “검색→옵션 제시→설치”의 기본 흐름을 안내하는 **범용** 스킬입니다.
+- `skills-scout`는 **Hard mode 검증(메타데이터/위험 커맨드) + 명시적 동의 게이트 + Codex 전역 설치(-g -a codex)**를 기본값으로 강제합니다.
+- `skills-scout`는 추가로, 설치된 스킬을 레포 `AGENTS.md`에 자동으로 핀해서 **레포 단위로 스킬이 실제로 ‘보이도록’** 하는 보조 스크립트를 제공합니다.
+
 ---
 
 ## Overview (EN)
@@ -104,3 +115,14 @@ Apply changes:
 ```bash
 node ~/.codex/skills/skills-scout/scripts/pin-agents-md.mjs --repo . --write
 ```
+
+## How this differs from `find-skills` (vercel-labs/skills)
+
+`skills-scout` overlaps with the upstream skill below, but it is intentionally **stricter for Codex** (install safely, not blindly).
+
+- Reference: https://github.com/vercel-labs/skills/blob/main/skills/find-skills/SKILL.md
+
+Summary:
+- `find-skills` is a general guide for using the Skills CLI and presenting/installing options.
+- `skills-scout` adds **hard‑mode vetting + explicit consent gates + Codex global install defaults (-g -a codex)**.
+- `skills-scout` also includes an optional helper to pin installed skills into a repo `AGENTS.md` so they are actually “visible” per repo.
